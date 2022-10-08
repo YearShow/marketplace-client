@@ -9,6 +9,7 @@ const PrivateRoutes: React.FC = () => {
 	const location = useLocation()
 
 	const isMatch = checkPathMatch(location.pathname, paths)
+
 	return (
 		<Routes>
 			<Route path={paths.accountSettings} element={<AccountSettingsPage />} />

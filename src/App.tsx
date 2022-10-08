@@ -7,7 +7,7 @@ const App = () => {
 	return (
 		<Suspense fallback={'Loading...'}>
 			<PublicRoutes />
-			<PrivateRoutes />
+			{/* <PrivateRoutes /> */}
 		</Suspense>
 	)
 }
