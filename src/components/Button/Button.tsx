@@ -60,4 +60,4 @@ const Button = styled(({
 	}};
 `
 
-export default Button
+export default Button;
