@@ -2,14 +2,16 @@
 //
 // App paths
 //
-
 export const pathsPublic: { [k: string]: string } = {
 	home: '/',
-	productDetails: '/product/:idOrSlug'
+	login: '/login',
+	productDetails: '/product/:idOrSlug',
+	favorites: '/favorites',
+	cart: '/cart'
 }
 
 export const pathsPrivate: { [k: string]: string } = {
-	accountSettings: '/account-settings',
+	accountSettings: '/account-settings'
 }
 
 export const paths: { [k: string]: string } = Object.assign({}, pathsPublic, pathsPrivate)

@@ -1,14 +1,12 @@
-import Button from 'components/Button'
-import React from 'react'
-import { useCallback, useMemo } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useCallback, useMemo } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-// import { useAppDispatch } from 'store'
-// import Button from 'components/Button'
-// import { paths } from 'routes/helpers'
-// import { addToFavorites, removeFromFavorites } from 'features/Favorites/reducer'
-// import { ReactComponent as HeartEmpty } from 'img/heart-empty.svg'
-// import { ReactComponent as HeartFilled } from 'img/heart-filled.svg'
+import Button from 'components/Button';
+import { paths } from 'routes/helpers';
+import { addToFavorites, removeFromFavorites } from 'features/Favorites/reducer';
+import { ReactComponent as HeartEmpty } from 'img/heart-empty.svg';
+import { ReactComponent as HeartFilled } from 'img/heart-filled.svg';
 import {
 	Wrapper,
 	LikeWrapper,
@@ -20,7 +18,7 @@ import {
 	Title,
 	Desc,
 	BtnsWrapper,
-} from './styled'
+} from './styled';
 
 
 interface I_ProductCardProps {
@@ -31,7 +29,7 @@ interface I_ProductCardProps {
 	priceDiscounted?: number
 	title: string
 	desc: string
-	// isLiked: boolean
+	isLiked: boolean
 	hideLikes?: boolean
 }
 
@@ -44,34 +42,34 @@ const ProductCard: React.FC<I_ProductCardProps> = ({
 	priceDiscounted,
 	title,
 	desc,
-	// isLiked,
+	isLiked,
 	hideLikes = false,
 }) => {
-	// const dispatch = useAppDispatch()
-	// const location = useLocation()
+	const dispatch = useDispatch()
+	const location = useLocation()
 
-	// const handleFavorites = useCallback((e: React.MouseEvent<HTMLElement>) => {
-	// 	const { productId } = e.currentTarget.dataset
+	const handleFavorites = useCallback((e: React.MouseEvent<HTMLElement>) => {
+		const { productId } = e.currentTarget.dataset
 
-	// 	dispatch(
-	// 		!isLiked
-	// 			? addToFavorites(+productId!)
-	// 			: removeFromFavorites(+productId!)
-	// 	)
-	// }, [dispatch, isLiked])
+		dispatch(
+			!isLiked
+				? addToFavorites(+productId!)
+				: removeFromFavorites(+productId!)
+		)
+	}, [dispatch, isLiked])
 
-	// const isFavoritesPage = useMemo(
-	// 	() => location.pathname === paths.favorites,
-	// 	[location.pathname]
-	// )
+	const isFavoritesPage = useMemo(
+		() => location.pathname === paths.favorites,
+		[location.pathname]
+	)
 
-	// const removeFavorite = useCallback(
-	// 	(e: React.MouseEvent<HTMLElement>) => {
-	// 		dispatch(
-	// 			removeFromFavorites(+e.currentTarget.dataset.productId!)
-	// 		)
-	// 	}, [dispatch]
-	// )
+	const removeFavorite = useCallback(
+		(e: React.MouseEvent<HTMLElement>) => {
+			dispatch(
+				removeFromFavorites(+e.currentTarget.dataset.productId!)
+			)
+		}, [dispatch]
+	)
 
 
 	return (
@@ -79,15 +77,14 @@ const ProductCard: React.FC<I_ProductCardProps> = ({
 			{!hideLikes && (
 				<LikeWrapper
 					data-product-id={id}
-				// onClick={handleFavorites}
+					onClick={handleFavorites}
 				>
-					{/* {isLiked ? <HeartFilled /> : <HeartEmpty />} */}
-					{/* <HeartEmpty /> */}
+					{isLiked ? <HeartFilled /> : <HeartEmpty />}
 				</LikeWrapper>
 			)}
 
 			<Link to={`/product/${slug || id}`}>
-				<Image src={`${process.env.REACT_APP_API_URL}/images/products/${imgSrc}`} />
+				<Image src={imgSrc} />
 			</Link>
 
 			<PriceWrapper>
@@ -107,9 +104,7 @@ const ProductCard: React.FC<I_ProductCardProps> = ({
 
 			<Desc>{desc}</Desc>
 
-			<Button>В корзину</Button>
-
-			{/* <BtnsWrapper>
+			<BtnsWrapper>
 				<Button block>
 					В корзину
 				</Button>
@@ -124,9 +119,9 @@ const ProductCard: React.FC<I_ProductCardProps> = ({
 						Удалить
 					</Button>
 				)}
-			</BtnsWrapper> */}
+			</BtnsWrapper>
 		</Wrapper>
 	)
 }
 
-export default ProductCard
+export default ProductCard;

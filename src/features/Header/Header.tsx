@@ -1,16 +1,15 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-// import { useAppSelector } from 'store'
-import { paths } from 'routes/helpers'
-import Button from 'components/Button'
-import Input from 'components/Input'
-import { selectIsLogged } from 'features/App/selectors'
-// import { selectFavorites } from 'features/Favorites/selectors'
-import UserDropdownMenu from './UserDropdownMenu'
-import logoPng from 'img/logo.png'
-
+// import { useAppSelector } from 'store';
+import { paths } from 'routes/helpers';
+import Button from 'components/Button';
+import Input from 'components/Input';
+import { selectIsLogged } from 'features/App/selectors';
+import { selectFavorites } from 'features/Favorites/selectors';
+// import { selectFavorites } from 'features/Favorites/selectors';
+import UserDropdownMenu from './UserDropdownMenu';
 import {
 	Wrapper,
 	LeftSide,
@@ -23,19 +22,20 @@ import {
 	BtnFavorites,
 	BtnNotifications,
 	BtnCart,
-} from './styled'
+} from './styled';
 
+import logoPng from 'img/logo.png';
 
 const Header: React.FC = () => {
 	// const location = useLocation()
 
-	const isLogged = useSelector(selectIsLogged)
-	// const favorites = useAppSelector(selectFavorites)
+	const isLogged = useSelector(selectIsLogged);
+	const favorites = useSelector(selectFavorites);
 
-	const [searchInput, setSearchInput] = useState<string>('')
+	const [searchInput, setSearchInput] = useState<string>('');
 
 	const changeSearchInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-		setSearchInput(e.target.value)
+		setSearchInput(e.target.value);
 	}, [])
 
 
@@ -76,10 +76,10 @@ const Header: React.FC = () => {
 
 			<RightSide>
 				{isLogged ? <>
-					<BtnOrders count={1} />
-					<BtnFavorites count={2} />
-					<BtnNotifications count={3} />
-					<BtnCart count={4} />
+					<BtnOrders />
+					<BtnFavorites count={favorites.length} />
+					<BtnNotifications />
+					<BtnCart />
 					<UserDropdownMenu />
 				</> : (
 					<Link to={paths.login}>

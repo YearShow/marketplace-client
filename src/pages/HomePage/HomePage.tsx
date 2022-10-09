@@ -1,11 +1,18 @@
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Helmet } from "react-helmet";
 
 import { PageWrapper } from 'App.styled';
 import { dummyProducts } from 'pages/dummyProducts';
 import { ProductGroup, ProductGroupContainer } from './styled';
 import ProductCard from 'blocks/ProductCard';
+import { selectFavorites } from 'features/Favorites/selectors';
 
 const HomePage: React.FC = () => {
+	const idsInFavorites = useSelector(selectFavorites);
+
+	// const [products, setProducts] = useState<any[]>([])
+
 	return <>
 		<Helmet>
 			<title>Главная - MW Marketplace</title>
@@ -19,8 +26,7 @@ const HomePage: React.FC = () => {
 						<ProductCard
 							{...p}
 							key={p.id}
-						// isLiked={idsInFavorites.includes(p.id)}
-						// isLiked={false}
+							isLiked={idsInFavorites.includes(p.id)}
 						/>
 					))}
 				</ProductGroupContainer>
