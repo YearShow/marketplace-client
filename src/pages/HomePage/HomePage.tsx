@@ -1,3 +1,4 @@
+import { PageWrapper } from 'App.styled';
 import { Helmet } from "react-helmet";
 import { TestDiv } from './styled';
 
@@ -6,7 +7,9 @@ const HomePage: React.FC = () => {
 		<Helmet>
 			<title>Главная - MW Marketplace</title>
 		</Helmet>
-		<h1>Главная</h1>
+		<PageWrapper>
+			<h1>Главная</h1>
+		</PageWrapper>
 	</>
 }
 
