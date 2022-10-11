@@ -22,7 +22,7 @@ import {
 } from './styled';
 import type { I_ProductDetails } from 'pages/types';
 import type { I_UniRes } from 'types';
-import { dummyProducts } from 'pages/dummyProducts';
+import { get } from 'helpers/request';
 
 
 const ProductDetailsPage: React.FC = () => {
@@ -37,11 +37,8 @@ const ProductDetailsPage: React.FC = () => {
 	// }, [params.idOrSlug])
 
 	useEffect(() => {
-		const found = dummyProducts.find((p) => (
-			[String(p.id), p.slug].includes(params.idOrSlug)
-		))
-
-		if (found) setProductDetails(found);
+		get(`/products/${params.idOrSlug}`)
+			.then((res: I_UniRes) => setProductDetails(res.data))
 	}, [params.idOrSlug])
 
 	const idsInFavorites = useSelector(selectFavorites);
@@ -65,7 +62,7 @@ const ProductDetailsPage: React.FC = () => {
 	if (!productDetails) return null
 
 
-	const { id, imgSrc, title, desc, price, priceDiscounted } = productDetails
+	const { id, image, title, description, price, priceDiscounted } = productDetails
 
 
 	return <>
@@ -76,7 +73,7 @@ const ProductDetailsPage: React.FC = () => {
 		<PageWrapper>
 			<Wrapper>
 				<ImagesWrapper>
-					<Image src={imgSrc} />
+					<Image src={`${process.env.REACT_APP_API_URL}/images/products/${image}`} />
 
 					<LikeWrapper
 						data-product-id={id}
@@ -98,7 +95,7 @@ const ProductDetailsPage: React.FC = () => {
 						)}
 					</PriceWrapper>
 
-					<p>{desc}</p>
+					<p>{description}</p>
 				</InfoWrapper>
 			</Wrapper>
 		</PageWrapper>

@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 
+import { useAppDispatch } from 'store';
 import Button from 'components/Button';
 import { paths } from 'routes/helpers';
 import { addToFavorites, removeFromFavorites } from 'features/Favorites/reducer';
@@ -24,7 +24,7 @@ import {
 interface I_ProductCardProps {
 	id: number
 	slug?: string
-	imgSrc: string
+	image: string
 	price: number
 	priceDiscounted?: number
 	title: string
@@ -37,7 +37,7 @@ interface I_ProductCardProps {
 const ProductCard: React.FC<I_ProductCardProps> = ({
 	id,
 	slug,
-	imgSrc,
+	image,
 	price,
 	priceDiscounted,
 	title,
@@ -45,8 +45,8 @@ const ProductCard: React.FC<I_ProductCardProps> = ({
 	isLiked,
 	hideLikes = false,
 }) => {
-	const dispatch = useDispatch()
-	const location = useLocation()
+	const dispatch = useAppDispatch();
+	const location = useLocation();
 
 	const handleFavorites = useCallback((e: React.MouseEvent<HTMLElement>) => {
 		const { productId } = e.currentTarget.dataset
@@ -69,7 +69,7 @@ const ProductCard: React.FC<I_ProductCardProps> = ({
 				removeFromFavorites(+e.currentTarget.dataset.productId!)
 			)
 		}, [dispatch]
-	)
+	);
 
 
 	return (
@@ -84,7 +84,7 @@ const ProductCard: React.FC<I_ProductCardProps> = ({
 			)}
 
 			<Link to={`/product/${slug || id}`}>
-				<Image src={imgSrc} />
+				<Image src={`${process.env.REACT_APP_API_URL}/images/products/${image}`} />
 			</Link>
 
 			<PriceWrapper>

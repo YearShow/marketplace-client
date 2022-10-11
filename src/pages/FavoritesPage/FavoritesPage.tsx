@@ -1,7 +1,6 @@
-import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
-// import { useAppSelector } from 'store'
+import { useAppSelector } from 'store'
 import ProductCard from 'blocks/ProductCard'
 import { selectFavorites } from 'features/Favorites/selectors'
 import { dummyProducts } from 'pages/dummyProducts'
@@ -10,7 +9,7 @@ import { PageWrapper } from 'App.styled'
 
 
 const FavoritesPage: React.FC = () => {
-	const idsInFavorites = useSelector(selectFavorites);
+	const idsInFavorites = useAppSelector(selectFavorites);
 
 
 	return <>
