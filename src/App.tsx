@@ -1,25 +1,35 @@
-import { Suspense } from 'react';
+import { Suspense } from 'react'
+import { useLocation } from 'react-router-dom'
 
-import Header from 'features/Header';
-import PrivateRoutes from 'routes/PrivateRoutes';
-import PublicRoutes from 'routes/PublicRoutes';
-import { AppStyles, Footer } from 'App.styled';
+import { paths } from 'routes/helpers'
+import Header from 'features/Header'
+import PublicRoutes from 'routes/PublicRoutes'
+// import PrivateRoutes from 'routes/PrivateRoutes'
+import { AppStyles, Footer } from 'App.styled'
 
-const App = () => {
-	return <>
-		<AppStyles />
 
-		<Header />
+export const App = () => {
+  const location = useLocation()
 
-		<Suspense fallback={'Loading...'}>
-			<PublicRoutes />
-			{/* <PrivateRoutes /> */}
-		</Suspense>
+  const notIsAuthPage = ![ paths.login, paths.register ].includes(location.pathname)
 
-		<Footer>
-			<div>© Маркетплейс</div>
-		</Footer>
-	</>
+
+  return <>
+    <AppStyles />
+
+    {notIsAuthPage && <Header />}
+
+    <Suspense fallback={'Loading...'}>
+      <PublicRoutes />
+      {/* <PrivateRoutes /> */}
+    </Suspense>
+
+    {notIsAuthPage && (
+      <Footer>
+        <div>© Маркетплейс MW</div>
+      </Footer>
+    )}
+  </>
 }
 
-export default App;
+export default App

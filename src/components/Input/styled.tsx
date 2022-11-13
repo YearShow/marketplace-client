@@ -45,10 +45,10 @@ export const Label = styled.label`
 `
 
 interface I_InputItselfProps {
-	type: 'text' | 'password' | 'date'
-	isGhost: boolean
-	disabled?: boolean
-	icon?: React.ReactNode
+  type: 'text' | 'password' | 'date'
+  isGhost: boolean
+  disabled?: boolean
+  icon?: React.ReactNode
 }
 export const InputItself = styled.input<I_InputItselfProps>`
   width: 100%;
@@ -59,20 +59,20 @@ export const InputItself = styled.input<I_InputItselfProps>`
   border-radius: ${(p) => p.isGhost ? '0' : '4px'};
   ${({ disabled }) => disabled ? 'user-select: none' : ''};
   padding-left: ${(p) => {
-		if (p.icon) return '50px'
-		if (p.isGhost) return '0'
-		return '12px'
-	}};
+    if (p.icon) return '50px'
+    if (p.isGhost) return '0'
+    return '12px'
+  }};
   padding-right: ${(p) => {
-		if (p.type === 'password') return '43px'
-		if (p.isGhost) return '0'
-		return '12px'
-	}};
+    if (p.type === 'password') return '43px'
+    if (p.isGhost) return '0'
+    return '12px'
+  }};
   background-color: ${(p) => {
-		if (p.disabled) return '#efefef'
-		if (p.isGhost) return 'transparent'
-		return '#fff'
-	}};
+    if (p.disabled) return '#efefef'
+    if (p.isGhost) return 'transparent'
+    return '#fff'
+  }};
 
   &:focus {
     outline: 0;
@@ -84,7 +84,7 @@ export const InputItself = styled.input<I_InputItselfProps>`
 `
 
 interface I_TogglePasswordVisibilityProps {
-	passwordVisibility: boolean
+  passwordVisibility: boolean
 }
 export const TogglePasswordVisibility = styled.div<I_TogglePasswordVisibilityProps>`
   position: absolute;
@@ -93,5 +93,7 @@ export const TogglePasswordVisibility = styled.div<I_TogglePasswordVisibilityPro
   width: 15px;
   height: 12px;
   cursor: pointer;
- 
+  background-image: url(
+    ${(p) => p.passwordVisibility ? eyeVisible : eyeHidden}
+  );
 `

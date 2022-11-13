@@ -1,18 +1,18 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-import { Z_INDEX_LEVEL_2 } from 'consts';
-import { paths } from 'routes/helpers';
-import colors from 'consts/colors';
-import search from './img/search.svg';
-import orders from './img/orders.svg';
-import favorites from './img/favorites.svg';
-import notifications from './img/notifications.svg';
-import cart from './img/cart.svg';
+import { Z_INDEX_LEVEL_2 } from 'consts'
+import { paths } from 'routes/helpers'
+import colors from 'consts/colors'
+import search from './img/search.svg'
+import orders from './img/orders.svg'
+import favorites from './img/favorites.svg'
+import notifications from './img/notifications.svg'
+import cart from './img/cart.svg'
 
 
 export interface I_CountProps {
-	count?: number
+  count?: number
 }
 
 
@@ -101,9 +101,9 @@ export const RightSide = styled.div`
 `
 
 export const BtnOrders = styled((props: any) => (
-	<div {...props}>
-		<Link to={paths.favorites} />
-	</div>
+  <div {...props}>
+    <Link to={paths.favorites} />
+  </div>
 ))`
   cursor: pointer;
   width: 20px;
@@ -131,9 +131,9 @@ export const BtnOrders = styled((props: any) => (
 `
 
 export const BtnFavorites = styled((props: any) => (
-	<div {...props}>
-		<Link to={paths.favorites} />
-	</div>
+  <div {...props}>
+    <Link to={paths.favorites} />
+  </div>
 ))`
   cursor: pointer;
   width: 20px;
@@ -187,9 +187,9 @@ export const BtnNotifications = styled.div<I_CountProps>`
 `
 
 export const BtnCart = styled((props: any) => (
-	<div {...props}>
-		<Link to={paths.cart} />
-	</div>
+  <div {...props}>
+    <Link to={paths.cart} />
+  </div>
 ))`
   cursor: pointer;
   width: 20px;

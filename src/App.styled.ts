@@ -20,24 +20,29 @@ export const AppStyles = createGlobalStyle`
     color: #5e5873;
     min-width: 320px;
   }
+
   *,
   *:before,
   *:after {
     box-sizing: border-box;
   }
+
   a {
     color: inherit;
     text-decoration: inherit;
     color: ${colors.primary};
   }
+
   ul, li {
     list-style: none;
   }
+
   img {
     display: block;
     max-width: 100%;
     height: auto;
   }
+
   tr,
   td,
   th,
@@ -49,22 +54,28 @@ export const AppStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
   h1, .h1 {
     font-size: 26px;
   }
+
   h2, .h2 {
     font-size: 22px;
   }
+
   h3, .h3 {
     font-size: 18px;
   }
+
   h4, .h4 {
     font-size: 16px;
   }
+
   p, li {
     line-height: 21px;
   }
 `
+
 
 //
 // Global app styled components
@@ -82,6 +93,7 @@ export const Footer = styled.div`
   background-color: ${colors.primary};
   color: #fff;
   height: ${FOOTER_HEIGHT};
+
   > :last-child {
     cursor: pointer;
   }

@@ -1,1 +1,1 @@
-export type I_Favorites = number[];
+export type I_Favorites = number[]

@@ -16,6 +16,7 @@ export const PageWrapper = styled.div`
   overflow: hidden;
   background-position: center;
   background-size: cover;
+
   @media (max-width: 476px) {
     padding: 0;
   }
@@ -33,11 +34,13 @@ export const FormWrapper = styled.div`
   text-align: inherit;
   position: relative;
   z-index: 2;
+
   @media (max-width: 672px) {
     text-align: center;
     padding: 20px 30px;
     margin: 16px auto;
   }
+
   @media (max-width: 476px) {
     padding: 20px;
     border-radius: 0;
@@ -51,15 +54,16 @@ export const AuthForm = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   > * {
     width: 100%;
   }
 `
 
 export const Logo = styled((props) => (
-	<Link to={paths.home}>
-		<img {...props} alt='' />
-	</Link>
+  <Link to={paths.home}>
+    <img {...props} alt='' />
+  </Link>
 ))`
   margin: 0 auto;
   max-width: 300px;
@@ -71,6 +75,7 @@ export const Heading = styled.p`
   font-weight: 400;
   line-height: 29px;
   margin-bottom: 5px;
+
   @media (max-width: 672px) {
     font-size: 16px;
     line-height: 24px;
@@ -80,6 +85,7 @@ export const Heading = styled.p`
 export const SubHeading = styled.p`
   font-size: 14px;
   margin-bottom: 20px;
+
   @media (max-width: 672px) {
     font-size: 13px;
     margin-bottom: 12px;
@@ -91,6 +97,7 @@ export const VerticalCol = styled.form`
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 20px;
+
   > * + * {
     margin-top: 16px;
   }
@@ -102,9 +109,11 @@ export const GoToWrapper = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   line-height: 24px;
+
   > * {
     white-space: pre;
   }
+
   > a {
     color: ${colors.purple};
   }
